@@ -22,9 +22,11 @@ import java.time.LocalDateTime;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@Profile("demo")
 public class DataInitializer {
 
     @Bean
@@ -51,7 +53,7 @@ public class DataInitializer {
                 return;
             }
 
-            String encodedPassword = passwordEncoder.encode("demo123");
+            String encodedPassword = passwordEncoder.encode(requiredSeedPassword());
 
             Conducteur amine = utilisateurRepository.save(new Conducteur(
                     "Bennani",
@@ -221,7 +223,7 @@ public class DataInitializer {
                     "Admin",
                     "System",
                     "admin@cov.local",
-                    passwordEncoder.encode("admin123"),
+                    passwordEncoder.encode(requiredSeedPassword()),
                     "0000000000"
             );
             utilisateurRepository.save(admin);
@@ -239,7 +241,7 @@ public class DataInitializer {
             return;
         }
 
-        String encodedPassword = passwordEncoder.encode("demo123");
+        String encodedPassword = passwordEncoder.encode(requiredSeedPassword());
 
         Conducteur tarek = utilisateurRepository.save(new Conducteur(
                 "Ben Salah",
@@ -558,5 +560,14 @@ public class DataInitializer {
         reclamation.setMessage(message);
         reclamation.setStatut(statut);
         return reclamation;
+    }
+    private String requiredSeedPassword() {
+        String password = System.getenv("COV_DEMO_PASSWORD");
+        if (password == null || password.isBlank()) {
+            throw new IllegalStateException(
+                    "COV_DEMO_PASSWORD is required when the demo profile is active"
+            );
+        }
+        return password;
     }
 }
