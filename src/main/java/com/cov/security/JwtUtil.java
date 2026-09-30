@@ -3,7 +3,6 @@ package com.cov.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -61,7 +60,7 @@ public class JwtUtil {
     private Key getSigningKey() {
         String secret = jwtConfig.getSecret();
         if (secret == null || secret.isBlank()) {
-            secret = "REMOVED_CONFIGURE_JWT_SECRET";
+            throw new IllegalStateException("JWT_SECRET must be configured");
         }
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
