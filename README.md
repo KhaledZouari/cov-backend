@@ -5,9 +5,12 @@
 [![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Security](https://img.shields.io/badge/Security-JWT_%2B_Spring_Security-2E7D32)](#security)
 
-REST API for a role-based carpooling platform. It manages authentication, driver onboarding, vehicles, trip discovery, bookings, ratings, complaints, and administrative supervision.
+REST API for a role-based carpooling platform. It manages authentication, driver
+onboarding, vehicles, trip discovery, bookings, ratings, complaints, and
+administrative supervision.
 
-This repository contains the Spring Boot backend. The complete public project is presented in [carpooling-platform](https://github.com/KhaledZouari/carpooling-platform).
+This repository contains the Spring Boot backend. The complete public project is
+presented in [carpooling-platform](https://github.com/KhaledZouari/carpooling-platform).
 
 ## Key features
 
@@ -70,6 +73,21 @@ erDiagram
     UTILISATEUR ||--o{ RECLAMATION : submits
 ```
 
+## Companion application screenshots
+
+These captures show the React companion application connected to this running
+API with its fictional seeded journeys and accounts. This repository is an API;
+the browser interface lives in [carpooling-
+platform](https://github.com/KhaledZouari/carpooling-platform).
+
+![Ride search served by the API](docs/screenshots/ride-search.png)
+
+Public journey discovery and seat availability from the local demonstration.
+
+![Driver booking workspace served by the API](docs/screenshots/driver-dashboard.png)
+
+Authenticated driver workflow with a pending seat request and published trips.
+
 ## Getting started
 
 ### Prerequisites
@@ -87,7 +105,8 @@ cd cov-backend
 
 ### 2. Configure the environment
 
-Create an empty MySQL database or allow the configured connection URL to create `ihm_cov`. Then define the required variables:
+Create an empty MySQL database or allow the configured connection URL to create
+`ihm_cov`. Then define the required variables:
 
 | Variable | Required | Description |
 | --- | --- | --- |
@@ -107,7 +126,8 @@ export JWT_SECRET="$(openssl rand -base64 48)"
 export FRONTEND_URLS="http://localhost:5173"
 ```
 
-Never commit `.env` files or production credentials. The supplied `.env.example` contains names and safe placeholders only.
+Never commit `.env` files or production credentials. The supplied `.env.example`
+contains names and safe placeholders only.
 
 ### 3. Run the API
 
@@ -125,7 +145,8 @@ The API starts at `http://localhost:8089` by default.
 
 ### Optional demo data
 
-Demo data is disabled during normal execution. To enable the `demo` Spring profile, define `COV_DEMO_PASSWORD` and run:
+Demo data is disabled during normal execution. To enable the `demo` Spring
+profile, define `COV_DEMO_PASSWORD` and run:
 
 ```bash
 SPRING_PROFILES_ACTIVE=demo ./mvnw spring-boot:run
@@ -153,7 +174,9 @@ Authorization: Bearer <token>
 
 ### Trip search
 
-`GET /api/trajets` supports optional filters including departure, destination, date, available seats, trip type, smoking and pet preferences, vehicle type, status, price range, driver rating, distance, and departure-time range.
+`GET /api/trajets` supports optional filters including departure, destination,
+date, available seats, trip type, smoking and pet preferences, vehicle type,
+status, price range, driver rating, distance, and departure-time range.
 
 Example:
 
@@ -203,7 +226,10 @@ src/
 - CORS origins are configurable through an explicit allowlist.
 - Request DTOs use Jakarta Bean Validation.
 
-For production, use a secrets manager, serve the API exclusively over HTTPS, rotate signing keys, restrict CORS origins, disable verbose SQL logging, use schema migrations instead of `ddl-auto=update`, validate uploaded files, and add rate limiting and security monitoring.
+For production, use a secrets manager, serve the API exclusively over HTTPS,
+rotate signing keys, restrict CORS origins, disable verbose SQL logging, use
+schema migrations instead of `ddl-auto=update`, validate uploaded files, and add
+rate limiting and security monitoring.
 
 ## Contribution workflow
 
@@ -215,7 +241,9 @@ For production, use a secrets manager, serve the API exclusively over HTTPS, rot
 
 ## License
 
-No open-source license has been assigned yet. Copyright remains with the repository owner; public availability does not grant permission to reuse or redistribute the code.
+No open-source license has been assigned yet. Copyright remains with the
+repository owner; public availability does not grant permission to reuse or
+redistribute the code.
 
 ## Author
 

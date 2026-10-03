@@ -1,0 +1,18 @@
+{
+  "captured_on": "2026-10-03",
+  "kind": "runtime screenshots",
+  "images": [
+    {
+      "file": "ride-search.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "48de3c28c58767c21c4608b5742551b103f3597053e005204ae5570073a272cb"
+    },
+    {
+      "file": "driver-dashboard.png",
+      "width": 1440,
+      "height": 1000,
+      "sha256": "4a947b6abf167c325b566dde3237794c3cf54fa11fd9783593c21ab1d747fe53"
+    }
+  ]
+}
